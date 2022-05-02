@@ -9,9 +9,10 @@ class CAccount {
 public:
     string AName;
     string ANum;
+    string AType;
+    double ABal;
     currency_t ACurr;
     string pCurrency;
-    double ABal;
 
     CAccount();
 
@@ -27,8 +28,9 @@ public:
 
     bool transfer(CAccount *receiver, double amount);
 
+    virtual void simulation(int) {}
+
 //	void withdraw(double);												//old version
-//	CAccount& transfer(CAccount& account, double amount);				//old version
 };
 
 //SubClass Regular account =============================================================================================
@@ -43,6 +45,8 @@ public:
     ~CARegular() = default;
 
     void print() override;
+
+    void simulation(int) override;
 };
 
 //SubClass Saving account ==============================================================================================
@@ -58,4 +62,6 @@ public:
     ~CASaving() = default;
 
     void print() override;
+
+    void simulation(int) override;
 };

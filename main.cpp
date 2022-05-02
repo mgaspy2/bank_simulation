@@ -18,24 +18,32 @@ int main() {
     b0.addAcc(a03);
     b0.addAcc(a04);
 
-    b0.printP();
+    b0.print();
 
     a00->deposit(300);
-    b0.deposit( "01", 2000);
+    b0.deposit("01", 2000);
 
-    b0.printP();
+    b0.print();
 
     a03->withdraw(500);
-    b0.withdraw( "04", 100);
+    b0.withdraw("04", 100);
 
-    b0.printP();
+    b0.print();
 
-    a00->transfer( a01, 50);
-    b0.transfer( "01", "02", 500);
-    b0.transfer( "03", "04", 1000);
-    b0.transfer( "04", "03", 1000);
+    a00->transfer(a01, 50);
+    b0.transfer("01", "02", 500);
+    b0.transfer("03", "04", 1000);
+    b0.transfer("04", "03", 1000);
 
-    b0.printP();
+    b0.print();
+
+    a03->simulation(35);
+    a04->simulation(35);
+    a03->print();
+    a04->print();
+    b0.simulation(62);
+
+    b0.print();
 
     return 1;
 }

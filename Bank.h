@@ -16,7 +16,7 @@ public:
 
     void addAcc(CAccount *account) { accountsP.push_back(account); }
 
-    void printP();
+    void print();
 
     void print(const string &accountNum);
 
@@ -26,5 +26,7 @@ public:
 
     bool transfer(const string &senderNum, const string &receiverNum, double amount);
 
-//  int sizeP();
+    void simulation(int);
+
+//  int size();
 };

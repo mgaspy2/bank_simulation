@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Bank.h"
 
-void CBank::printP() {
+void CBank::print() {
     for (auto &accountP: accountsP)
         accountP->print();
     cout << endl;
@@ -43,9 +43,15 @@ bool CBank::transfer(const string &senderNum, const string &receiverNum, double 
     return sender->transfer(receiver, amount);
 }
 
+void CBank::simulation(int days) {
+    for(auto account:accountsP) {
+        account->simulation(days);
+    }
+}
+
 /*
-int CBank::sizeP() {
-    int s = accountsP.size();
-    return s;
+int CBank::size() {
+    int size = accountsP.size();
+    return size;
 }
 */

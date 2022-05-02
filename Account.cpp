@@ -5,9 +5,10 @@
 CAccount::CAccount() {
     AName = "";
     ANum = "";
+    AType = "BASE";
     ACurr = EURO;
-    ABal = 0;
     pCurrency = " EURO";
+    ABal = 0;
 }
 
 CAccount::CAccount(string number, string name, currency_t currency, double balance) {
@@ -78,6 +79,7 @@ bool CAccount::transfer(CAccount *receiver, double amount) {
     cout << endl;
     return true;
 }
+
 /*
 void CAccount::withdraw(double value) {
     if (ABal > value) {
@@ -86,17 +88,6 @@ void CAccount::withdraw(double value) {
     }
     else
         cout << "Insufficient funds, your balance is: " << ABal << " EUR" << endl << endl;
-}
-
-CAccount& CAccount::transfer(CAccount& account, double value) {
-    if (account.ABal > value) {
-        ABal += value;
-        account.ABal -= value;
-        cout << "Transferred " << value << " EURO from account num.: " << ANum << " to account num.: " << account.ANum << " ..." << endl << endl;
-        return *this;
-    }
-    else
-        cout << "Insufficient funds, your balance is: " << account.ABal << " EUR" << endl << endl;
 }
 */
 
@@ -135,6 +126,24 @@ void CARegular::print() {
          << "Maintanance fee: " << AMFee << pCurrency << ", " << "Balance: " << ABal << pCurrency << endl;
 }
 
+void CARegular::simulation(int days) {
+    int Days = days;
+    int months = 0;
+
+    while (Days < 0) {
+        Days += 30;
+        months--;
+    }
+    while (months < 0) {
+        months += 1;
+    }
+    months += Days / 30;
+    Days %= 30;
+
+    for (int i = 0; i < months; ++i)
+        ABal -= AMFee;
+}
+
 
 // CASaving =======================================================================================================
 
@@ -170,4 +179,24 @@ void CASaving::print() {
     cout << "Number: " << ANum << ", " << "Type: " << AType << ", " << "Name: " << AName << ", " << "Interest: "
          << AInt * 100 << " %" << ", " << "Interest rate: " << AIRate * 100 << " %" << ", " << "Balance: "
          << ABal << pCurrency << endl;
+}
+
+void CASaving::simulation(int days) {
+    int Days = days;
+    int months = 0;
+
+    while (Days < 0) {
+        Days += 30;
+        months--;
+    }
+    while (months < 0) {
+        months += 1;
+    }
+    months += Days / 30;
+    Days %= 30;
+
+    for (int i = 0; i < months; ++i) {
+        ABal += ABal * AInt;
+        ABal -= ABal * AIRate;
+    }
 }
