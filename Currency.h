@@ -1,7 +1,5 @@
 #pragma once
 
-#include <map>
-
 using namespace std;
 
 enum currency_t {
@@ -50,7 +48,6 @@ static double exchangeRate(currency_t sendingAcc, currency_t receivingAcc) {
                 case USD:
                     return 0.71;
             }
-
     }
     return 0;
 }

@@ -8,25 +8,23 @@ using namespace std;
 
 class CBank {
 private:
-    vector<CAccount *> accountsP = {};                                            //vector of pointers on CAccount class objects     //vector of CAccount classes
+    vector<CAccount *> accountsP = {};
 public:
     CBank() = default;
 
     ~CBank() = default;
 
-//	Pointer methods ======================================================================================
-    void addAccP(CAccount* account) { accountsP.push_back(account); }
+    void addAcc(CAccount *account) { accountsP.push_back(account); }
 
     void printP();
 
-    void printP(string accountNum);
+    void print(const string &accountNum);
 
-    void depositP(string accountNum, double amount);
+    void deposit(const string &accountNum, double amount);
 
-    bool withdrawP(string accountNum, double amount);
+    bool withdraw(const string &accountNum, double amount);
 
-    bool transferP(string senderNum, string receiverNum, double amount);
+    bool transfer(const string &senderNum, const string &receiverNum, double amount);
 
-    int sizeP();
-//  ======================================================================================================
+//  int sizeP();
 };

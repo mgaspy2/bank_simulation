@@ -1,55 +1,51 @@
+#include <iostream>
 #include "Account.h"
 #include "Currency.h"
-#include <iostream>
+
+CAccount::CAccount() {
+    AName = "";
+    ANum = "";
+    ACurr = EURO;
+    ABal = 0;
+    pCurrency = " EURO";
+}
 
 CAccount::CAccount(string number, string name, currency_t currency, double balance) {
     ANum = number;
     AName = name;
     ACurr = currency;
     ABal = balance;
+
+    switch (this->ACurr) {
+        case EURO:
+            pCurrency = " EURO";
+            break;
+        case CZK:
+            pCurrency = " CZK";
+            break;
+        case USD:
+            pCurrency = " USD";
+            break;
+        case AUD:
+            pCurrency = " AUD";
+            break;
+        default:
+            pCurrency = " ---";
+            break;
+    }
 }
 
 void CAccount::print() {
-    string currency;
-
-    switch(this->ACurr){
-        case EURO:
-            currency = " EURO";
-            break;
-        case CZK:
-            currency = " CZK";
-            break;
-        case USD:
-            currency = " USD";
-            break;
-        case AUD:
-            currency = " AUD";
-            break;
-        default:
-            currency = " ---";
-            break;
-    }
-
-    cout << "Number: " << ANum << ", " << "Name: " << AName << ", " << "Balance: " << ABal << currency << endl;
+    cout << "Number: " << ANum << ", " << "Name: " << AName << ", " << "Balance: " << ABal << pCurrency << endl;
 }
 
 void CAccount::deposit(double amount) {
     ABal += amount;
-    cout << "Deposited " << amount << " EURO to account num.: " << ANum << " ..." << endl;
+    cout << "Deposited " << amount << pCurrency << " to account num.: " << ANum << " ..." << endl;
     print();
     cout << endl;
 }
 
-/*
-void CAccount::withdraw(double value) {
-	if (ABal > value) {
-		ABal -= value;
-		cout << "Withdrawn " << value << " EURO from account num.: " << ANum << " ..." << endl << endl;
-	}
-	else
-		cout << "Insufficient funds, your balance is: " << ABal << " EUR" << endl << endl;
-}
-*/
 
 bool CAccount::withdraw(double amount) {
     if (ABal < amount) {
@@ -57,7 +53,7 @@ bool CAccount::withdraw(double amount) {
         return false;
     }
     ABal -= amount;
-    cout << "Withdrawn " << amount << " EURO from account num.: " << ANum << " ..." << endl;
+    cout << "Withdrawn " << amount << pCurrency << " from account num.: " << ANum << " ..." << endl;
     print();
     cout << endl;
     return true;
@@ -66,7 +62,7 @@ bool CAccount::withdraw(double amount) {
 bool CAccount::transfer(CAccount *receiver, double amount) {
     double rate = 1.0;
     if (ABal < amount) {
-        std::cout << "Insufficient funds, your balance is: " << ABal << " EUR" << endl << endl;
+        std::cout << "Insufficient funds, your balance is: " << ABal << pCurrency << endl << endl;
         return false;
     }
     if (receiver->ACurr != this->ACurr) {
@@ -74,25 +70,33 @@ bool CAccount::transfer(CAccount *receiver, double amount) {
     }
     ABal -= amount;
     receiver->ABal += amount * rate;
-    cout << "Transfered " << amount << " EURO from account num.: " << ANum << " to account num.: " << receiver->ANum
+    cout << "Transferred " << amount << pCurrency << " from account num.: " << ANum << " to account num.: "
+         << receiver->ANum
          << " ..." << endl;
     print();
     receiver->print();
     cout << endl;
     return true;
 }
-
 /*
+void CAccount::withdraw(double value) {
+    if (ABal > value) {
+        ABal -= value;
+        cout << "Withdrawn " << value << " EURO from account num.: " << ANum << " ..." << endl << endl;
+    }
+    else
+        cout << "Insufficient funds, your balance is: " << ABal << " EUR" << endl << endl;
+}
 
 CAccount& CAccount::transfer(CAccount& account, double value) {
-	if (account.ABal > value) {
-		ABal += value;
-		account.ABal -= value;
-		cout << "Transfered " << value << " EURO from account num.: " << ANum << " to account num.: " << account.ANum << " ..." << endl << endl;
-		return *this;
-	}
-	else
-		cout << "Insufficient funds, your balance is: " << account.ABal << " EUR" << endl << endl;
+    if (account.ABal > value) {
+        ABal += value;
+        account.ABal -= value;
+        cout << "Transferred " << value << " EURO from account num.: " << ANum << " to account num.: " << account.ANum << " ..." << endl << endl;
+        return *this;
+    }
+    else
+        cout << "Insufficient funds, your balance is: " << account.ABal << " EUR" << endl << endl;
 }
 */
 
@@ -106,11 +110,29 @@ CARegular::CARegular(string number, string name, currency_t currency, double fee
     AType = "Regular";
     AMFee = fee;
     ABal = balance;
+
+    switch (this->ACurr) {
+        case EURO:
+            pCurrency = " EURO";
+            break;
+        case CZK:
+            pCurrency = " CZK";
+            break;
+        case USD:
+            pCurrency = " USD";
+            break;
+        case AUD:
+            pCurrency = " AUD";
+            break;
+        default:
+            pCurrency = " ---";
+            break;
+    }
 }
 
 void CARegular::print() {
     cout << "Number: " << ANum << ", " << "Type: " << AType << ", " << "Name: " << AName << ", "
-         << "Maintanance fee: " << AMFee << " EUR" << ", " << "Balance: " << ABal << " EUR" << endl;
+         << "Maintanance fee: " << AMFee << pCurrency << ", " << "Balance: " << ABal << pCurrency << endl;
 }
 
 
@@ -124,10 +146,28 @@ CASaving::CASaving(string number, string name, currency_t currency, double inter
     AInt = interest;
     AIRate = iRate;
     ABal = balance;
+
+    switch (this->ACurr) {
+        case EURO:
+            pCurrency = " EURO";
+            break;
+        case CZK:
+            pCurrency = " CZK";
+            break;
+        case USD:
+            pCurrency = " USD";
+            break;
+        case AUD:
+            pCurrency = " AUD";
+            break;
+        default:
+            pCurrency = " ---";
+            break;
+    }
 }
 
 void CASaving::print() {
     cout << "Number: " << ANum << ", " << "Type: " << AType << ", " << "Name: " << AName << ", " << "Interest: "
          << AInt * 100 << " %" << ", " << "Interest rate: " << AIRate * 100 << " %" << ", " << "Balance: "
-         << ABal << " EUR" << endl;
+         << ABal << pCurrency << endl;
 }

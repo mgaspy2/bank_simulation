@@ -10,14 +10,10 @@ public:
     string AName;
     string ANum;
     currency_t ACurr;
+    string pCurrency;
     double ABal;
 
-    CAccount() {
-        AName = "";
-        ANum = "";
-        ACurr = EURO;
-        ABal = 0;
-    }
+    CAccount();
 
     CAccount(string number, string name, currency_t currency, double balance = 0);
 
@@ -26,16 +22,16 @@ public:
     virtual void print();
 
     void deposit(double);
-//	void withdraw(double);												//old version
 
     bool withdraw(double);
 
     bool transfer(CAccount *receiver, double amount);
 
+//	void withdraw(double);												//old version
 //	CAccount& transfer(CAccount& account, double amount);				//old version
 };
 
-//SubClass Regular account =====================================================================================================
+//SubClass Regular account =============================================================================================
 
 class CARegular : public CAccount {
 public:
@@ -49,7 +45,7 @@ public:
     void print() override;
 };
 
-//SubClass Saving account ======================================================================================================
+//SubClass Saving account ==============================================================================================
 
 class CASaving : public CAccount {
 public:
