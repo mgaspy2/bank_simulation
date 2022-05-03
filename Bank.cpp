@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 #include "Bank.h"
 
 void CBank::print() {
@@ -66,14 +67,19 @@ void CBank::simulation(int days) {
     }
     cout << days << " days have passed ..." << endl << endl;
     this->print();
-    this->tPrint();
+    if(Days != 0)
+        this->tPrint();
 }
 
 void CBank::simulation() {
-//    Real rDays simulation
-//    var/class rDays for storing rDays?
-//    1s = 1 day
-//
+    while(1){
+        sleep(1);
+        ++rDays;
+        if(rDays > 29){
+            this->simulation(rDays);
+            rDays = 0;
+        }
+    }
 }
 
 int CBank::size() {

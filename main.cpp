@@ -5,7 +5,8 @@ using namespace std;
 
 int main() {
 //  CAccount methods test
-    cout << "== CAccount methods test =============================================================================" << endl << endl;
+    cout << "== CAccount methods test ============================================================================="
+         << endl << endl;
     CAccount a00("00", "TEST0", EURO);
     CAccount a01("01", "TEST1", CZK, 3000);
     CARegular a02("02", "TEST2", EURO, 5);
@@ -33,7 +34,8 @@ int main() {
     cout << endl;
 
 //  CBank methods test
-    cout << "== CBank methods test ================================================================================" << endl << endl;
+    cout << "== CBank methods test ================================================================================"
+         << endl << endl;
     CBank b0;
 
     b0.addAcc(new CAccount("01", "TEST1", EURO));
@@ -60,6 +62,8 @@ int main() {
     b0.simulation(75);
 
     b0.simulation(28);
+
+    b0.simulation();
 
     return 1;
 }

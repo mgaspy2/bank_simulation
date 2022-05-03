@@ -71,8 +71,7 @@ bool CAccount::transfer(CAccount *receiver, double amount) {
     ABal -= amount;
     receiver->ABal += amount * rate;
     cout << "Transferred " << amount << pCurrency << " from account num.: " << ANum << " to account num.: "
-         << receiver->ANum
-         << " ..." << endl;
+         << receiver->ANum << " ..." << endl;
     print();
     receiver->print();
     cout << endl;
@@ -91,8 +90,7 @@ bool CAccount::transfer(CAccount receiver, double amount) {
     ABal -= amount;
     receiver.ABal += amount * rate;
     cout << "Transferred " << amount << pCurrency << " from account num.: " << ANum << " to account num.: "
-         << receiver.ANum
-         << " ..." << endl;
+         << receiver.ANum << " ..." << endl;
     print();
     receiver.print();
     cout << endl;
@@ -182,9 +180,8 @@ CASaving::CASaving(string number, string name, currency_t currency, double inter
 }
 
 void CASaving::print() {
-    cout << "Number: " << ANum << ", Type: " << AType << ", Name: " << AName << ", Interest: "
-         << AInt * 100 << " %, Interest rate: " << AIRate * 100 << " %, Balance: "
-         << ABal << pCurrency << endl;
+    cout << "Number: " << ANum << ", Type: " << AType << ", Name: " << AName << ", Interest: " << AInt * 100
+    << " %, Interest rate: " << AIRate * 100 << " %, Balance: " << ABal << pCurrency << endl;
 }
 
 void CASaving::simulation(int months) {
