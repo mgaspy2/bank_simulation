@@ -58,6 +58,7 @@ public:
     string AType;
     double AInt;
     double AIRate;
+    int rMonths;
 
     CASaving(string number, string name, currency_t currency, double interest, double iRate, double balance = 0);
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unistd.h>
+#include <windows.h>
 #include "Bank.h"
 
 void CBank::print() {
@@ -43,10 +43,6 @@ bool CBank::transfer(const string &senderNum, const string &receiverNum, double 
     return sender->transfer(receiver, amount);
 }
 
-void CBank::tPrint() {
-    cout << "Remainder days: " << rDays << endl << endl;
-}
-
 void CBank::simulation(int days) {
     int Days = rDays + days;
     int months = 0;
@@ -62,22 +58,29 @@ void CBank::simulation(int days) {
     Days %= 30;
 
     rDays = Days;
+    cout << days << " days have passed ..." << endl << endl;
     for (auto account: accountsP) {
         account->simulation(months);
     }
-    cout << days << " days have passed ..." << endl << endl;
+    if (Days != 0) {
+        if (rDays > 1)
+            cout << rDays  << " remainder days" << endl << endl;
+        else
+            cout << "1 remainder day" << endl << endl;
+    }
     this->print();
-    if(Days != 0)
-        this->tPrint();
 }
 
 void CBank::simulation() {
-    while(1){
-        sleep(1);
-        ++rDays;
-        if(rDays > 29){
-            this->simulation(rDays);
+    int days = rDays;
+
+    while (1) {
+        Sleep(200);
+        ++days;
+        if (days > 29) {
             rDays = 0;
+            this->simulation(days);
+            days = 0;
         }
     }
 }

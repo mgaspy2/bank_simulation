@@ -27,8 +27,6 @@ public:
 
     bool transfer(const string &senderNum, const string &receiverNum, double amount);
 
-    void tPrint();
-
     void simulation(int);
 
     void simulation();

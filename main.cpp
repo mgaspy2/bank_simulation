@@ -59,9 +59,9 @@ int main() {
 
     b0.print();
 
-    b0.simulation(75);
+    b0.simulation(31);
 
-    b0.simulation(28);
+    b0.simulation(44);
 
     b0.simulation();
 

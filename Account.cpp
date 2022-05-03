@@ -159,6 +159,7 @@ CASaving::CASaving(string number, string name, currency_t currency, double inter
     AInt = interest;
     AIRate = iRate;
     ABal = balance;
+    rMonths = 0;
 
     switch (this->ACurr) {
         case EURO:
@@ -181,12 +182,34 @@ CASaving::CASaving(string number, string name, currency_t currency, double inter
 
 void CASaving::print() {
     cout << "Number: " << ANum << ", Type: " << AType << ", Name: " << AName << ", Interest: " << AInt * 100
-    << " %, Interest rate: " << AIRate * 100 << " %, Balance: " << ABal << pCurrency << endl;
+         << " %, Interest rate: " << AIRate * 100 << " %, Balance: " << ABal << pCurrency << endl;
 }
 
-void CASaving::simulation(int months) {
-    for (int i = 0; i < months; ++i) {
-        ABal += ABal * AInt;
-        ABal -= ABal * AIRate;
+void CASaving::simulation(int Months) {
+    int months = rMonths + Months;
+    int years = 0;
+
+    while (months < 0) {
+        months += 12;
+        years--;
     }
+    while (years < 0) {
+        years += 1;
+    }
+    years += months / 12;
+    months %= 12;
+
+    rMonths = months;
+    if (years > 0) {
+        for (int i = 0; i < years; ++i) {
+            ABal += ABal * AInt;
+            ABal -= ABal * AIRate;
+        }
+    } else {
+        if (rMonths > 1)
+            cout << rMonths << " remainder months" << endl << endl;
+        else
+            cout << "1 remainder month" << endl << endl;
+    }
+
 }
