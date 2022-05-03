@@ -28,6 +28,8 @@ public:
 
     bool transfer(CAccount *receiver, double amount);
 
+    bool transfer(CAccount receiver, double amount);
+
     virtual void simulation(int) {}
 
 //	void withdraw(double);												//old version

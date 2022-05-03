@@ -10,7 +10,7 @@ enum currency_t {
 };
 
 static double exchangeRate(currency_t sendingAcc, currency_t receivingAcc) {
-    // rates set 1.5.2022
+    // rates set 1.5.2022 from xCurrency mini app
     switch (sendingAcc) {
         case EURO:
             switch (receivingAcc) {

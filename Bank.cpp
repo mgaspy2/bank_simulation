@@ -17,12 +17,11 @@ void CBank::print(const string &accountNum) {
 }
 
 void CBank::deposit(const string &accountNum, double amount) {
-    for (auto *accountP: accountsP) {
-        if (accountP->ANum == accountNum){
+    for (auto *accountP: accountsP)
+        if (accountP->ANum == accountNum) {
             accountP->deposit(amount);
             break;
         }
-    }
 }
 
 bool CBank::withdraw(const string &accountNum, double amount) {
@@ -43,15 +42,41 @@ bool CBank::transfer(const string &senderNum, const string &receiverNum, double 
     return sender->transfer(receiver, amount);
 }
 
-void CBank::simulation(int days) {
-    for(auto account:accountsP) {
-        account->simulation(days);
-    }
+void CBank::tPrint() {
+    cout << "Remainder days: " << rDays << endl << endl;
 }
 
-/*
+void CBank::simulation(int days) {
+    int Days = rDays + days;
+    int months = 0;
+
+    while (Days < 0) {
+        Days += 30;
+        months--;
+    }
+    while (months < 0) {
+        months += 1;
+    }
+    months += Days / 30;
+    Days %= 30;
+
+    rDays = Days;
+    for (auto account: accountsP) {
+        account->simulation(months);
+    }
+    cout << days << " days have passed ..." << endl << endl;
+    this->print();
+    this->tPrint();
+}
+
+void CBank::simulation() {
+//    Real rDays simulation
+//    var/class rDays for storing rDays?
+//    1s = 1 day
+//
+}
+
 int CBank::size() {
     int size = accountsP.size();
     return size;
 }
-*/

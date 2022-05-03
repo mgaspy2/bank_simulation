@@ -9,6 +9,7 @@ using namespace std;
 class CBank {
 private:
     vector<CAccount *> accountsP = {};
+    int rDays = 0;
 public:
     CBank() = default;
 
@@ -26,7 +27,12 @@ public:
 
     bool transfer(const string &senderNum, const string &receiverNum, double amount);
 
+    void tPrint();
+
     void simulation(int);
 
-//  int size();
+    void simulation();
+
+    int size();
 };
+
