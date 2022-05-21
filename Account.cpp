@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Account.h"
 #include "Currency.h"
 
@@ -36,7 +37,8 @@ CAccount::CAccount(string number, string name, currency_t currency, double balan
 }
 
 void CAccount::print() {
-    cout << "Number: " << ANum << ", Name: " << AName << ", Balance: " << ABal << pCurrency << endl;
+    cout << "Number: " << ANum << ", Name: " << AName << ", Balance: " << setprecision(2) << fixed << ABal
+         << pCurrency << endl;
 }
 
 void CAccount::deposit(double amount) {
@@ -140,7 +142,8 @@ CARegular::CARegular(string number, string name, currency_t currency, double fee
 
 void CARegular::print() {
     cout << "Number: " << ANum << ", Type: " << AType << ", Name: " << AName
-         << ", Maintanance fee: " << AMFee << pCurrency << ", Balance: " << ABal << pCurrency << endl;
+         << ", Maintenance fee: " << AMFee << pCurrency << ", Balance: " << setprecision(2) << fixed << ABal
+         << pCurrency << endl;
 }
 
 void CARegular::simulation(int months) {
@@ -151,12 +154,11 @@ void CARegular::simulation(int months) {
 
 // CASaving =======================================================================================================
 
-CASaving::CASaving(string number, string name, currency_t currency, double interest, double iRate, double balance) {
+CASaving::CASaving(string number, string name, currency_t currency, double iRate, double balance) {
     ANum = number;
     AName = name;
     ACurr = currency;
     AType = "Saving";
-    AInt = interest;
     AIRate = iRate;
     ABal = balance;
     rMonths = 0;
@@ -181,8 +183,8 @@ CASaving::CASaving(string number, string name, currency_t currency, double inter
 }
 
 void CASaving::print() {
-    cout << "Number: " << ANum << ", Type: " << AType << ", Name: " << AName << ", Interest: " << AInt * 100
-         << " %, Interest rate: " << AIRate * 100 << " %, Balance: " << ABal << pCurrency << endl;
+    cout << "Number: " << ANum << ", Type: " << AType << ", Name: " << AName << ", Interest rate: " << AIRate * 100
+         << " %, Balance: " << setprecision(2) << fixed << ABal << pCurrency << endl;
 }
 
 void CASaving::simulation(int Months) {
@@ -202,8 +204,7 @@ void CASaving::simulation(int Months) {
     rMonths = months;
     if (years > 0) {
         for (int i = 0; i < years; ++i) {
-            ABal += ABal * AInt;
-            ABal -= ABal * AIRate;
+            ABal += ABal * AIRate;
         }
     } else {
         if (rMonths > 1)

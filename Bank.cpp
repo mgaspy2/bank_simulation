@@ -64,7 +64,7 @@ void CBank::simulation(int days) {
     }
     if (Days != 0) {
         if (rDays > 1)
-            cout << rDays  << " remainder days" << endl << endl;
+            cout << rDays << " remainder days" << endl << endl;
         else
             cout << "1 remainder day" << endl << endl;
     }

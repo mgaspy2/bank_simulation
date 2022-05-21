@@ -1,7 +1,5 @@
 #pragma once
 
-using namespace std;
-
 enum currency_t {
     EURO,
     CZK,
@@ -10,7 +8,7 @@ enum currency_t {
 };
 
 static double exchangeRate(currency_t sendingAcc, currency_t receivingAcc) {
-    // rates set 1.5.2022 from xCurrency mini app
+    // rates set 1.5.2022 from xCurrency mini android app
     switch (sendingAcc) {
         case EURO:
             switch (receivingAcc) {

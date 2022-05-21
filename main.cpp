@@ -9,8 +9,8 @@ int main() {
          << endl << endl;
     CAccount a00("00", "TEST0", EURO);
     CAccount a01("01", "TEST1", CZK, 3000);
-    CARegular a02("02", "TEST2", EURO, 5);
-    CASaving a03("00", "TEST3", AUD, 0.025, 0.05, 10000);
+    CARegular a02("02", "TESTr2", EURO, 5);
+    CASaving a03("03", "TESTs3", AUD, 0.025, 10000);
 
     a00.print();
     a01.print();
@@ -41,7 +41,7 @@ int main() {
     b0.addAcc(new CAccount("01", "TEST1", EURO));
     b0.addAcc(new CAccount("02", "TEST2", CZK, 10000));
     b0.addAcc(new CARegular("03", "TREG3", USD, 5));
-    b0.addAcc(new CASaving("04", "TSAV4", AUD, 0.025, 0.0025, 6000));
+    b0.addAcc(new CASaving("04", "TSAV4", AUD, 0.025, 6000));
 
     b0.print();
 
@@ -59,11 +59,13 @@ int main() {
 
     b0.print();
 
-    b0.simulation(31);
+    b0.simulation(100);
 
-    b0.simulation(44);
+    b0.simulation(78);
+
+    b0.simulation(185);
 
     b0.simulation();
 
-    return 1;
+    return 0;
 }

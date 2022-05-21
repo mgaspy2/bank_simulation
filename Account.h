@@ -39,7 +39,6 @@ public:
 
 class CARegular : public CAccount {
 public:
-    string AType;
     double AMFee;
 
     CARegular(string number, string name, currency_t currency, double fee, double balance = 0);
@@ -55,12 +54,10 @@ public:
 
 class CASaving : public CAccount {
 public:
-    string AType;
-    double AInt;
     double AIRate;
     int rMonths;
 
-    CASaving(string number, string name, currency_t currency, double interest, double iRate, double balance = 0);
+    CASaving(string number, string name, currency_t currency, double iRate, double balance = 0);
 
     ~CASaving() = default;
 
