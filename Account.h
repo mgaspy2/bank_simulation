@@ -6,13 +6,15 @@
 using namespace std;
 
 class CAccount {
-public:
-    string AName;
-    string ANum;
-    string AType;
+protected:
     double ABal;
+    string AName;
+    string AType;
     currency_t ACurr;
     string pCurrency;
+
+public:
+    string ANum;
 
     CAccount();
 
@@ -38,9 +40,9 @@ public:
 //SubClass Regular account =============================================================================================
 
 class CARegular : public CAccount {
-public:
     double AMFee;
 
+public:
     CARegular(string number, string name, currency_t currency, double fee, double balance = 0);
 
     ~CARegular() = default;
@@ -53,10 +55,10 @@ public:
 //SubClass Saving account ==============================================================================================
 
 class CASaving : public CAccount {
-public:
     double AIRate;
     int rMonths;
 
+public:
     CASaving(string number, string name, currency_t currency, double iRate, double balance = 0);
 
     ~CASaving() = default;
