@@ -80,7 +80,7 @@ bool CAccount::transfer(CAccount *receiver, double amount) {
     return true;
 }
 
-bool CAccount::transfer(CAccount receiver, double amount) {
+bool CAccount::transfer(CAccount &receiver, double amount) {
     double rate = 1.0;
     if (ABal < amount) {
         cout << "Insufficient funds, your balance is: " << ABal << pCurrency << endl << endl;
@@ -109,7 +109,6 @@ void CAccount::withdraw(double amount) {
         cout << "Insufficient funds, your balance is: " << ABal << " EUR" << endl << endl;
 }
 */
-
 
 // CARegular ======================================================================================================
 
@@ -150,7 +149,6 @@ void CARegular::simulation(int months) {
     for (int i = 0; i < months; ++i)
         ABal -= AMFee;
 }
-
 
 // CASaving =======================================================================================================
 

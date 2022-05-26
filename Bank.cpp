@@ -2,6 +2,11 @@
 #include <windows.h>
 #include "Bank.h"
 
+int CBank::size() {
+    int size = accountsP.size();
+    return size;
+}
+
 void CBank::print() {
     for (auto &accountP: accountsP)
         accountP->print();
@@ -83,9 +88,4 @@ void CBank::simulation() {
             days = 0;
         }
     }
-}
-
-int CBank::size() {
-    int size = accountsP.size();
-    return size;
 }

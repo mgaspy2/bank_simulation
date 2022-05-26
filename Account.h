@@ -28,16 +28,16 @@ public:
 
     bool withdraw(double);
 
-    bool transfer(CAccount *receiver, double amount);
+    bool transfer(CAccount *receiver, double amount);                   // method used by CBank methods
 
-    bool transfer(CAccount receiver, double amount);
+    bool transfer(CAccount &receiver, double amount);
 
     virtual void simulation(int) {}
 
-//	void withdraw(double);												//old version
+//	void withdraw(double);												// old version
 };
 
-//SubClass Regular account =============================================================================================
+// SubClass Regular account ============================================================================================
 
 class CARegular : public CAccount {
     double AMFee;
@@ -52,7 +52,7 @@ public:
     void simulation(int) override;
 };
 
-//SubClass Saving account ==============================================================================================
+// SubClass Saving account =============================================================================================
 
 class CASaving : public CAccount {
     double AIRate;

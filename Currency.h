@@ -31,7 +31,7 @@ static double exchangeRate(currency_t sendingAcc, currency_t receivingAcc) {
         case USD:
             switch (receivingAcc) {
                 case EURO:
-                    return 0.041;
+                    return 0.936;
                 case CZK:
                     return 23.31;
                 case AUD:

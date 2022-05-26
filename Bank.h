@@ -10,12 +10,15 @@ class CBank {
 private:
     vector<CAccount *> accountsP = {};
     int rDays = 0;
+
 public:
     CBank() = default;
 
     ~CBank() = default;
 
     void addAcc(CAccount *account) { accountsP.push_back(account); }
+
+    int size();
 
     void print();
 
@@ -30,7 +33,4 @@ public:
     void simulation(int);
 
     void simulation();
-
-    int size();
 };
-

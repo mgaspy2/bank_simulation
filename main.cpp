@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 //  CAccount methods test
-    cout << "== CAccount methods test ============================================================================="
+    cout << "== CAccount methods test ================================================================================="
          << endl << endl;
     CAccount a00("00", "TEST0", EURO);
     CAccount a01("01", "TEST1", CZK, 3000);
@@ -34,7 +34,7 @@ int main() {
     cout << endl;
 
 //  CBank methods test
-    cout << "== CBank methods test ================================================================================"
+    cout << "== CBank methods test ===================================================================================="
          << endl << endl;
     CBank b0;
 
@@ -65,7 +65,7 @@ int main() {
 
     b0.simulation(185);
 
-    b0.simulation();
+//    b0.simulation();             // Simulation runs until interrupted
 
     return 0;
 }
